@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: github-connectorsrv
+  labels:
+    app: github-connectorsrv
+    service: github-connectorsrv
+spec:
+  ports:
+   - port: 9082
+     name: http
+     targetPort: 8080
+  selector:
+    app: github-connector

@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+ package pub;
+ option go_package = "./;pub";
+import "google/protobuf/empty.proto";
+
+message Createrepodata {
+
+ int64 id=1;
+ string createdat=2;
+ string updatedat=3;
+ string deletedat=4;
+ string name=5;
+ bool autoinit=6;
+ bool private=7;
+ string gitignoretemplate=8;
+ }
+message Requestdata {
+
+ int64 id=1;
+ string createdat=2;
+ string updatedat=3;
+ string deletedat=4;
+ string token=5;
+ string operation=6;
+ string gitrepoowner=7;
+ string repotodelete=8;
+ string repotocommit=9;
+ string branchtocommit=10;
+ }
+
+message RequestDto {
+
+ string data=1;
+ }
+message ResponseDto {
+
+ string data=1;
+ }
+message SidecarRequest {
+ RequestDto RequestDto=1;
+} 
+
+service Service{
+ 
+rpc Sidecar(SidecarRequest) returns (ResponseDto) {}
+ }
